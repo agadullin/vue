@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <form id="att" action="">
+        <input v-model="email" 
+               placeholder="Email" 
+               type="text">
+        <br>
+        <input v-model="firstName"
+                placeholder="First Name"
+                type="text">
+        <br>
+        <input v-model="lastName"
+                placeholder="Last Name"
+                type="text">
+        <br>
+        <input v-model="phone"
+                placeholder="Phone"
+                type="text">
+        <br>
+
+        <div v-for="(item, i) in items">
+            <div v-on:dbclick="delQuest">Гость {{ i + 1 }}</div>
+            <input type="text">
+        </div>
+        <p> {{ email }} {{ firstName }} {{ lastName }}  {{ phone }}</p>
+        <input type="button"
+                v-on:click="addQuest"
+                value="add quest">
+        <input type="button" value="send Data">
+    </form>
+
+    <script>
+        var vm = new Vue ({
+            el: "#att",
+            data: {
+                items: [],
+                email: "",
+                firstName: "",     
+                lastName: "",
+                phone: "",
+                number: 1
+            },
+
+            methods: {
+                addQuest() {
+                   this.items.push(1);
+                },
+
+                delQuest() {
+                    this.items.pop();
+                }
+            },
+        })
+    </script>
+</body>
+</html>
