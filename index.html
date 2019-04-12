@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    <form id="att" action="">
+    <form id="att" action="go.html" method="POST">
         <input v-model="email" 
                placeholder="Email" 
                type="text">
@@ -28,14 +28,14 @@
         <br>
 
         <div v-for="(item, i) in items">
-            <div v-on:dbclick="delQuest">Гость {{ i + 1 }}</div>
+            <p v-on:dblclick="QA">Гость {{ i + 1 }}</p>
             <input type="text">
         </div>
-        <p> {{ email }} {{ firstName }} {{ lastName }}  {{ phone }}</p>
+        <p> {{ items }} {{ firstName }} {{ lastName }}  {{ phone }}</p>
         <input type="button"
-                v-on:click="addQuest"
+                v-on:click="addQuest()"
                 value="add quest">
-        <input type="button" value="send Data">
+        <button>send</button>
     </form>
 
     <script>
@@ -52,13 +52,15 @@
 
             methods: {
                 addQuest() {
-                   this.items.push(1);
+                   this.items.push("");
+                   console.log(this.items);
                 },
 
-                delQuest() {
-                    this.items.pop();
+                QA() {
+                     this.items.pop();
+                   console.log(this.items);
                 }
-            },
+            }
         })
     </script>
 </body>
