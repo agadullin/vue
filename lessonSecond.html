@@ -18,15 +18,23 @@
         <div class="container form-group ">
             <label for="name">Name</label>
             <i class="fa fa-times" style="color:red" aria-hidden="true"></i>
-            <i class="fa fa-check" style="color:green" aria-hidden="true"></i>
-            <input v-model="name" class="form-control" type="text" name="name">
+            <!-- <i class="fa fa-check" style="color:green" aria-hidden="true"></i>  Будем менять класс в иконке -->
+            <input v-model="info[0]['value']" class="form-control" type="text" name="name">
             <label for="phone">Phone</label>
-            <input v-model="phone" class="form-control" type="text" name="phone">
+            <input v-model="info[1]['value']" class="form-control" type="text" name="phone">
             <label for="email">Email</label>
-            <input class="form-control" type="text" name="email">
+            <input v-model="info[2]['value']" class="form-control" type="text" name="email">
             <label for="some">Some</label>
-            <input class="form-control" type="text" name="some">
+            <input v-model="info[3]['value']" class="form-control" type="text" name="some">
+            <input class="btn btn-success" type="button" value="Send Data">
         </div>
+        {{info[0]['value']}}
+        <br>
+        {{info[1]['value']}}
+        <br>
+        {{info[2]['value']}}
+        <br>
+        {{info[3]['value']}}
     </form>
 
 
@@ -34,12 +42,37 @@
     <script>
         var vm = new Vue({
             el: "#app",
+            
             data: {
-                name: "",
-                phone: "",
-                email: "",
-                some: "",
-            }
+                info:[
+                    {
+                        name: 'Name',
+                        value: "",
+                        pattern: /^[a-zA-Z ]{2,30}$/
+                    },
+                    {
+                        name: "Phone",
+                        value: "",
+                        pattern: /^[0-9]{7,14}$/
+                    },
+                    {
+                        name: "Email",
+                        value: "",
+                        pattern: /.+/
+                    },
+                    {
+                        name: "Some",
+                        value: "",
+                        pattern: /.+/
+                    }
+                ]
+            },
+
+            methods: {
+                    
+            },
+            
+            
         })
     
     
