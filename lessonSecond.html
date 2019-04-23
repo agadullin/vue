@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,31 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <form id="app">
-        <div class="container progress">
-            <div class=" progress-bar"></div> 
-        </div>       
-        <div class="container form-group ">
-            <label for="name">Name</label>
-            <i class="fa fa-times" style="color:red" aria-hidden="true"></i>
-            <!-- <i class="fa fa-check" style="color:green" aria-hidden="true"></i>  Будем менять класс в иконке -->
-            <input v-model="info[0]['value']" class="form-control" type="text" name="name">
-            <label for="phone">Phone</label>
-            <input v-model="info[1]['value']" class="form-control" type="text" name="phone">
-            <label for="email">Email</label>
-            <input v-model="info[2]['value']" class="form-control" type="text" name="email">
-            <label for="some">Some</label>
-            <input v-model="info[3]['value']" class="form-control" type="text" name="some">
-            <input class="btn btn-success" type="button" value="Send Data">
+    <div id="app">
+        <div v-for="item in info">
+            <label>{{ item.name }}</label>
+            <span><i class="fa fa-check" aria-hidden="true"></i></span>
+            <input type="text" v-model="item.value">
+            {{item.value}}
         </div>
-        {{info[0]['value']}}
-        <br>
-        {{info[1]['value']}}
-        <br>
-        {{info[2]['value']}}
-        <br>
-        {{info[3]['value']}}
-    </form>
+    </div>
+
 
 
 
@@ -61,7 +45,7 @@
                         pattern: /.+/
                     },
                     {
-                        name: "Some",
+                        name: "Some Text",
                         value: "",
                         pattern: /.+/
                     }
